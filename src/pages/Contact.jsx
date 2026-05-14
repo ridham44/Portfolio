@@ -77,17 +77,18 @@ export default function Contact() {
                 EMAILJS_SERVICE_ID,
                 EMAILJS_TEMPLATE_ID,
                 {
-                    from_name: form.name,
-                    from_email: form.email,
-                    subject: form.subject,
-                    message: form.message,
-                    to_name: 'Ridham',
+                    name:     form.name,
+                    email:    'ridhampaems@gmail.com',
+                    reply_to: form.email,
+                    subject:  form.subject,
+                    message:  form.message,
                 },
                 EMAILJS_PUBLIC_KEY,
             );
             setStatus('sent');
             setForm({ name: '', email: '', subject: '', message: '' });
-        } catch {
+        } catch (err) {
+            console.error('EmailJS error:', err?.text ?? err?.message ?? err);
             setStatus('error');
         }
     };
