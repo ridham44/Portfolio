@@ -7,5 +7,5 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  assetsInclude: ['**/*.HEIC', '**/*.heic'],
+  assetsInclude: ['**/*.HEIC', '**/*.heic', '**/*.pdf'],
 })
