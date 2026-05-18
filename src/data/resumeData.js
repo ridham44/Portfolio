@@ -73,7 +73,7 @@ export const projects = [
             'Engineered end-to-end from data ingestion to interactive dashboards. Python ML services (scikit-learn) model tyre degradation, undercut windows, and safety-car probabilities. A Generative AI layer produces automated strategic race briefings. Node.js/Express REST APIs connect async ML services to a React frontend persisted in MongoDB.',
         tech: ['React', 'Node.js', 'Express.js', 'MongoDB', 'Python', 'ML', 'Generative AI'],
         tags: ['React', 'Node.js', 'MongoDB', 'Python', 'ML', 'AI'],
-        github: 'https://github.com/ridham44',
+        github: 'https://github.com/ridham44/F1',
         color: 'from-sky-500 to-cyan-500',
     },
     {
