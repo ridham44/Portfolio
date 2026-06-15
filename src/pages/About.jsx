@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion';
 import { education, experience, skillGroups } from '../data/resumeData';
 import { certificates } from '../data/certificate';
+import chplLogo from '../assets/chpl logo.png';
+import ljLogo from '../assets/Lj unvi logo.png';
+import webearlLogo from '../assets/webearl logo.png';
 
 const fadeUp = (delay = 0) => ({
     initial: { opacity: 0, y: 24 },
@@ -119,6 +122,38 @@ function IssuerBadge({ issuer }) {
 
 const allSkills = skillGroups.flatMap((g) => g.skills);
 
+const ORG_LOGOS = {
+    'WebEarl Technologies': webearlLogo,
+    'Communities Heritage Limited (CHL Group)': chplLogo,
+    'LJ Institute of Engineering and Technology, LJ University': ljLogo,
+};
+
+function OrganizationLogo({ name }) {
+    const logo = ORG_LOGOS[name];
+
+    if (!logo) return null;
+
+    return (
+        <div
+            style={{
+                width: 48,
+                height: 48,
+                borderRadius: 12,
+                flexShrink: 0,
+                background: '#fff',
+                border: '1px solid var(--border-card)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: 7,
+                boxShadow: '0 10px 24px rgba(15, 16, 32, 0.12)',
+            }}
+        >
+            <img src={logo} alt={`${name} logo`} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+        </div>
+    );
+}
+
 export default function About() {
     return (
         <div className="page-container">
@@ -195,9 +230,12 @@ export default function About() {
                                         marginBottom: '0.75rem',
                                     }}
                                 >
-                                    <div>
-                                        <h3 style={{ fontWeight: 700, fontSize: '1.1rem' }}>{job.title}</h3>
-                                        <p style={{ color: 'var(--accent)', fontWeight: 600, fontSize: '0.95rem' }}>{job.company}</p>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', minWidth: 0 }}>
+                                        <OrganizationLogo name={job.company} />
+                                        <div style={{ minWidth: 0 }}>
+                                            <h3 style={{ fontWeight: 700, fontSize: '1.1rem' }}>{job.title}</h3>
+                                            <p style={{ color: 'var(--accent)', fontWeight: 600, fontSize: '0.95rem' }}>{job.company}</p>
+                                        </div>
                                     </div>
                                     <span
                                         style={{
@@ -265,10 +303,13 @@ export default function About() {
                                 gap: '1rem',
                             }}
                         >
-                            <div>
-                                <h3 style={{ fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.3rem' }}>{edu.degree}</h3>
-                                <p style={{ color: 'var(--accent)', fontWeight: 600, fontSize: '0.95rem' }}>{edu.institution}</p>
-                                <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginTop: '0.25rem' }}>{edu.period}</p>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.9rem', minWidth: 0 }}>
+                                <OrganizationLogo name={edu.institution} />
+                                <div style={{ minWidth: 0 }}>
+                                    <h3 style={{ fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.3rem' }}>{edu.degree}</h3>
+                                    <p style={{ color: 'var(--accent)', fontWeight: 600, fontSize: '0.95rem' }}>{edu.institution}</p>
+                                    <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginTop: '0.25rem' }}>{edu.period}</p>
+                                </div>
                             </div>
                             <div
                                 style={{

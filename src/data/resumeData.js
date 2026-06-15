@@ -15,7 +15,7 @@ export const education = [
         degree: 'Bachelor of Computer Science and Technology',
         institution: 'LJ Institute of Engineering and Technology, LJ University',
         period: '2022 – 2026',
-        gpa: '7.85 / 10',
+        gpa: '7.98 / 10',
     },
 ];
 
@@ -26,11 +26,9 @@ export const experience = [
         period: 'Mar 2026 – Present',
         current: true,
         points: [
-            'Developed full-stack applications using the MERN stack.',
-            'Engineered backend logic with Node.js and managed data using MongoDB (NoSQL).',
-            'Designed secure and efficient RESTful APIs.',
-            'Contributed to frontend development using React.js.',
-            'Participated in debugging, testing, and optimising application performance.',
+            'BookBuzz: Developed an academic book exchange and marketplace platform with APIs for authentication, books, cart management, purchases, trade-in orders, students, and publishers using Node.js, Express.js, MongoDB, and Mongoose.',
+            'PropertyHub: Built a real estate listing platform with APIs for properties, documents, amenities, nearby places, reviews, shortlists, and advanced search functionality using Node.js, Express.js, MongoDB, and Mongoose.',
+            'Shoply: Developed a scalable multi-tenant restaurant ordering and POS backend with APIs for menus, orders, billing, payments, QR code ordering, and reporting using Node.js, Express.js, Sequelize ORM, and MySQL.',
         ],
     },
     {
@@ -39,8 +37,8 @@ export const experience = [
         period: 'May 2025 – Dec 2025',
         current: false,
         points: [
-            'CHPL Food: Developed a scalable multi-tenant food ordering system backend with APIs for menu, orders, billing, payments, and reporting using Node.js, Express.js, Sequelize ORM and MySQL.',
-            'CHPL Vi: Built APIs and reports for call tracking, logging, and analytics including call details, role-based access, and timezone handling for tenant-specific insights.',
+            'CHPL Food: Developed a scalable multi-tenant food ordering system backend with APIs for menu, orders, billing, payments, and reporting using Node.js, Express.js, Sequelize ORM, and MySQL.',
+            'CHPL Vi: Built APIs and reports for call tracking, logging, and analytics including call details, role-based access, and timezone handling for tenant-specific insights using Node.js, Express.js, Sequelize ORM, and MySQL.',
         ],
     },
 ];
