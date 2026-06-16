@@ -163,6 +163,7 @@ export default function Home() {
         </div>
 
       </section>
+      <div style={{ marginTop: '-2rem' }}></div>
 
       {/* ── Skill marquee ── */}
       <SkillMarquee />

@@ -686,20 +686,22 @@ a {
 
 /* Paricles*/
 /* LIGHT */
+
 :root,
 [data-theme="light"] {
   --particle-color: 30,64,175;
-  --particle-opacity: 0.28;
+  --particle-line-opacity: 0.12;
+  --particle-dot-opacity: 0.45;
 }
 
-/* DARK */
 [data-theme="dark"] {
   --particle-color: 147,197,253;
-  --particle-opacity: 0.40;
+  --particle-line-opacity: 0.12;
+  --particle-dot-opacity: 0.75;
 }
 
-/* SEPIA */
 [data-theme="sepia"] {
   --particle-color: 30,58,138;
-  --particle-opacity: 0.32;
+  --particle-line-opacity: 0.12;
+  --particle-dot-opacity: 0.55;
 }

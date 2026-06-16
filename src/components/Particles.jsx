@@ -1,164 +1,215 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react';
 
 export default function Particles() {
-  const canvasRef = useRef(null);
+    const canvasRef = useRef(null);
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
 
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
 
-    let animationFrame;
-    let width;
-    let height;
+        let animationFrame;
 
-    const particles = [];
+        let width = 0;
+        let height = 0;
 
-    const PARTICLE_COUNT = 65;
-    const CONNECTION_DISTANCE = 140;
+        const particles = [];
+        const shootingStars = [];
 
-    const resize = () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    };
+        const getThemeValues = () => {
+            const styles = getComputedStyle(document.documentElement);
 
-    const getThemeValues = () => {
-      const styles = getComputedStyle(document.documentElement);
+            return {
+                color: styles.getPropertyValue('--particle-color').trim() || '96,165,250',
 
-      return {
-        color:
-          styles
-            .getPropertyValue("--particle-color")
-            .trim() || "96,165,250",
+                lineOpacity: parseFloat(styles.getPropertyValue('--particle-line-opacity')) || 0.15,
 
-        opacity:
-          parseFloat(
-            styles.getPropertyValue("--particle-opacity")
-          ) || 0.35,
-      };
-    };
+                dotOpacity: parseFloat(styles.getPropertyValue('--particle-dot-opacity')) || 0.7,
+            };
+        };
 
-    const createParticle = () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
+        const createParticle = () => ({
+            x: Math.random() * width,
+            y: Math.random() * height,
 
-      vx: (Math.random() - 0.5) * 0.25,
-      vy: (Math.random() - 0.5) * 0.25,
+            vx: (Math.random() - 0.5) * 0.2,
+            vy: (Math.random() - 0.5) * 0.2,
 
-      radius: Math.random() * 1.8 + 0.5,
+            radius: Math.random() * 1.5 + 1,
+            alpha: Math.random() * 0.5 + 0.4,
+        });
 
-      alpha: Math.random() * 0.4 + 0.2,
-    });
+        const createShootingStar = () => {
+            const isMobile = window.innerWidth < 768;
 
-    resize();
+            return {
+                x: Math.random() * width,
+                y: Math.random() * (height * 0.4),
 
-    window.addEventListener("resize", resize);
+                vx: isMobile ? 3 + Math.random() * 1.5 : 10 + Math.random() * 3,
 
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
-      particles.push(createParticle());
-    }
+                vy: isMobile ? 1.5 + Math.random() : 5 + Math.random() * 2,
 
-    const animate = () => {
-      const { color, opacity } = getThemeValues();
+                life: isMobile ? 450 : 300,
+                maxLife: isMobile ? 450 : 300,
+            };
+        };
 
-      ctx.clearRect(0, 0, width, height);
+        const resetParticles = () => {
+            particles.length = 0;
 
-      particles.forEach((p) => {
-        p.x += p.vx;
-        p.y += p.vy;
+            const isMobile = window.innerWidth < 768;
+            const count = isMobile ? 15 : 60;
 
-        if (p.x < 0) p.x = width;
-        if (p.x > width) p.x = 0;
+            for (let i = 0; i < count; i++) {
+                particles.push(createParticle());
+            }
 
-        if (p.y < 0) p.y = height;
-        if (p.y > height) p.y = 0;
+            shootingStars.length = 0;
 
-        ctx.beginPath();
-        ctx.arc(
-          p.x,
-          p.y,
-          p.radius,
-          0,
-          Math.PI * 2
-        );
+            const starCount = isMobile ? 1 : 2;
 
-        ctx.fillStyle = `rgba(${color},${p.alpha})`;
+            for (let i = 0; i < starCount; i++) {
+                shootingStars.push(createShootingStar());
+            }
+        };
 
-        ctx.shadowBlur = 12;
-        ctx.shadowColor = `rgba(${color},0.7)`;
+        const resize = () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
 
-        ctx.fill();
-      });
+            resetParticles();
+        };
 
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
+        resize();
 
-          const dist = Math.sqrt(dx * dx + dy * dy);
+        window.addEventListener('resize', resize);
 
-          if (dist < CONNECTION_DISTANCE) {
-            const lineOpacity =
-              (1 - dist / CONNECTION_DISTANCE) *
-              opacity;
+        const animate = () => {
+            const { color, lineOpacity, dotOpacity } = getThemeValues();
 
-            ctx.beginPath();
+            const isMobile = width < 768;
 
-            ctx.moveTo(
-              particles[i].x,
-              particles[i].y
-            );
+            const CONNECTION_DISTANCE = isMobile ? 55 : 150;
 
-            ctx.lineTo(
-              particles[j].x,
-              particles[j].y
-            );
+            ctx.clearRect(0, 0, width, height);
 
-            ctx.strokeStyle = `rgba(${color},${lineOpacity})`;
+            /* ==========================
+         PARTICLES
+      ========================== */
 
-            ctx.lineWidth = 0.8;
+            particles.forEach((p) => {
+                p.x += p.vx;
+                p.y += p.vy;
 
-            ctx.stroke();
-          }
-        }
-      }
+                if (p.x < 0) p.x = width;
+                if (p.x > width) p.x = 0;
 
-      animationFrame =
-        requestAnimationFrame(animate);
-    };
+                if (p.y < 0) p.y = height;
+                if (p.y > height) p.y = 0;
 
-    animate();
+                ctx.beginPath();
 
-    return () => {
-      window.removeEventListener(
-        "resize",
-        resize
-      );
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
 
-      cancelAnimationFrame(animationFrame);
-    };
-  }, []);
+                ctx.fillStyle = `rgba(${color},${p.alpha * dotOpacity})`;
 
-  return (
-    <canvas
-      ref={canvasRef}
-      style={{
-        position: "fixed",
-        inset: 0,
+                ctx.shadowBlur = 12;
+                ctx.shadowColor = `rgba(${color},0.8)`;
 
-        width: "100%",
-        height: "100%",
+                ctx.fill();
+            });
 
-        zIndex: 0,
+            /* ==========================
+         CONSTELLATION LINES
+      ========================== */
 
-        pointerEvents: "none",
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
 
-        opacity: 1,
+                    const dy = particles[i].y - particles[j].y;
 
-        mixBlendMode: "screen",
-      }}
-    />
-  );
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < CONNECTION_DISTANCE) {
+                        const opacity = (1 - distance / CONNECTION_DISTANCE) * lineOpacity;
+
+                        ctx.beginPath();
+
+                        ctx.moveTo(particles[i].x, particles[i].y);
+
+                        ctx.lineTo(particles[j].x, particles[j].y);
+
+                        ctx.strokeStyle = `rgba(${color},${opacity})`;
+
+                        ctx.lineWidth = 0.6;
+
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            /* ==========================
+         SHOOTING STARS
+      ========================== */
+
+            for (let i = shootingStars.length - 1; i >= 0; i--) {
+                const star = shootingStars[i];
+
+                star.x += star.vx;
+                star.y += star.vy;
+
+                star.life--;
+
+                const opacity = star.life / star.maxLife;
+
+                ctx.beginPath();
+
+                ctx.moveTo(star.x, star.y);
+
+                ctx.lineTo(star.x - 45, star.y - 22);
+
+                ctx.strokeStyle = `rgba(${color},${opacity})`;
+
+                ctx.lineWidth = 2.2;
+
+                ctx.shadowBlur = 25;
+                ctx.shadowColor = `rgba(${color},1)`;
+
+                ctx.stroke();
+
+                if (star.life <= 0 || star.x > width + 100 || star.y > height + 100) {
+                    shootingStars[i] = createShootingStar();
+                }
+            }
+
+            animationFrame = requestAnimationFrame(animate);
+        };
+
+        animate();
+
+        return () => {
+            window.removeEventListener('resize', resize);
+
+            cancelAnimationFrame(animationFrame);
+        };
+    }, []);
+
+    return (
+        <canvas
+            ref={canvasRef}
+            style={{
+                position: 'fixed',
+                inset: 0,
+                width: '100%',
+                height: '100%',
+                pointerEvents: 'none',
+                zIndex: 0,
+                opacity: 1,
+            }}
+        />
+    );
 }
