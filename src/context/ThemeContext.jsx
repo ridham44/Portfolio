@@ -1,15 +1,11 @@
-import { createContext, useContext, useState, useEffect } from 'react'
-
-const ThemeContext = createContext()
+import { useState, useEffect } from 'react'
+import { ThemeContext } from './ThemeContextBase'
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('portfolio-theme') || 'dark'
-  })
+  const [theme, setTheme] = useState('dark')
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
-    localStorage.setItem('portfolio-theme', theme)
   }, [theme])
 
   return (
@@ -18,5 +14,3 @@ export function ThemeProvider({ children }) {
     </ThemeContext.Provider>
   )
 }
-
-export const useTheme = () => useContext(ThemeContext)

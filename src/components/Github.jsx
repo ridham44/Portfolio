@@ -1,7 +1,10 @@
 import { GitHubCalendar } from 'react-github-calendar';
+import { useTheme } from '../context/useTheme';
 
 export default function GithubSection() {
-    const theme = {
+    const { theme: siteTheme } = useTheme();
+    const colorScheme = siteTheme === 'sepia' ? 'light' : 'dark';
+    const calendarTheme = {
         light: [
             "#e8eefc",// empty
             '#93c5fd',
@@ -25,7 +28,7 @@ export default function GithubSection() {
                 <p>Consistency over the last year</p>
             </div>
 
-            <GitHubCalendar username="ridham44" colorScheme="dark" theme={theme} hideColorLegend={false} hideMonthLabels={false} />
+            <GitHubCalendar username="ridham44" colorScheme={colorScheme} theme={calendarTheme} hideColorLegend={false} hideMonthLabels={false} />
         </div>
     );
 }

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { useTheme } from '../context/ThemeContext'
+import { useTheme } from '../context/useTheme'
 import myIcon from '../assets/Icon.jpg'
 
 const navLinks = [
@@ -10,11 +10,38 @@ const navLinks = [
   { to: '/contact', label: 'Contact' },
 ]
 
-const themes = [
-  { key: 'light',  icon: '☀️', label: 'Light' },
-  { key: 'dark',   icon: '🌙', label: 'Dark'  },
-  { key: 'sepia',  icon: '📜', label: 'Sepia' },
-]
+function ThemeToggle({ theme, setTheme, className = '' }) {
+  const isDark = theme === 'dark'
+  const nextTheme = isDark ? 'sepia' : 'dark'
+  const themeLabel = isDark ? 'Switch to maritime navy' : 'Switch to true midnight'
+
+  return (
+    <button
+      className={`theme-toggle ${className}`.trim()}
+      type="button"
+      aria-label={themeLabel}
+      title={themeLabel}
+      aria-pressed={isDark}
+      onClick={() => setTheme(nextTheme)}
+      data-active-theme={theme}
+    >
+      <span className="theme-toggle__track">
+        <span className="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4.2" />
+            <path d="M12 2.7v2.6M12 18.7v2.6M2.7 12h2.6M18.7 12h2.6M5.4 5.4l1.8 1.8M16.8 16.8l1.8 1.8M18.6 5.4l-1.8 1.8M7.2 16.8l-1.8 1.8" />
+          </svg>
+        </span>
+        <span className="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M19.1 14.7A7.1 7.1 0 0 1 9.3 4.9a8.1 8.1 0 1 0 9.8 9.8Z" />
+          </svg>
+        </span>
+        <span className="theme-toggle__thumb" aria-hidden="true" />
+      </span>
+    </button>
+  )
+}
 
 export default function Navbar() {
   const { theme, setTheme } = useTheme()
@@ -27,8 +54,6 @@ export default function Navbar() {
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
-
-  useEffect(() => { setMenuOpen(false) }, [pathname])
 
   return (
     <nav
@@ -57,6 +82,7 @@ export default function Navbar() {
             return (
               <Link
                 key={to} to={to}
+                onClick={() => setMenuOpen(false)}
                 style={{
                   padding: '0.45rem 1rem',
                   borderRadius: 9999,
@@ -74,37 +100,7 @@ export default function Navbar() {
         </div>
 
         {/* Theme switcher */}
-        <div
-          className="hidden-mobile"
-          style={{
-            display: 'flex', gap: '0.2rem',
-            background: 'var(--accent-light)',
-            borderRadius: 9999,
-            padding: '0.25rem',
-          }}
-        >
-          {themes.map(({ key, icon, label }) => (
-            <button
-              key={key}
-              title={label}
-              onClick={() => setTheme(key)}
-              style={{
-                width: 34, height: 34,
-                borderRadius: 9999,
-                border: 'none',
-                cursor: 'pointer',
-                fontSize: '1rem',
-                background: theme === key
-                  ? 'linear-gradient(135deg, var(--accent), var(--accent-2))'
-                  : 'transparent',
-                transition: 'all 0.2s',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-              }}
-            >
-              {icon}
-            </button>
-          ))}
-        </div>
+        <ThemeToggle theme={theme} setTheme={setTheme} className="hidden-mobile" />
 
         {/* Mobile hamburger */}
         <button
@@ -132,6 +128,7 @@ export default function Navbar() {
         }}>
           {navLinks.map(({ to, label }) => (
             <Link key={to} to={to}
+              onClick={() => setMenuOpen(false)}
               style={{
                 display: 'block', padding: '0.65rem 1rem',
                 borderRadius: '0.6rem', fontWeight: pathname === to ? 600 : 400,
@@ -143,24 +140,8 @@ export default function Navbar() {
               {label}
             </Link>
           ))}
-          <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid var(--border-card)' }}>
-            {themes.map(({ key, icon, label }) => (
-              <button
-                key={key}
-                onClick={() => setTheme(key)}
-                style={{
-                  flex: 1, padding: '0.5rem', borderRadius: '0.6rem',
-                  border: 'none', cursor: 'pointer', fontSize: '0.85rem',
-                  background: theme === key
-                    ? 'linear-gradient(135deg, var(--accent), var(--accent-2))'
-                    : 'var(--accent-light)',
-                  color: theme === key ? '#fff' : 'var(--text-secondary)',
-                  transition: 'all 0.2s',
-                }}
-              >
-                {icon} {label}
-              </button>
-            ))}
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid var(--border-card)' }}>
+            <ThemeToggle theme={theme} setTheme={setTheme} />
           </div>
         </div>
       )}

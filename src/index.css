@@ -1,32 +1,9 @@
 @import 'tailwindcss';
 
 /* ════════════════════════════════════════════
-   LIGHT — Midnight Mist
+   DARK - True Midnight
 ════════════════════════════════════════════ */
 :root,
-[data-theme='light'] {
-    --bg-primary: #f0f4ff;
-    --bg-secondary: #f8faff;
-    --bg-card: rgba(255, 255, 255, 0.65);
-    --border-card: rgba(255, 255, 255, 0.92);
-    --shadow-card: 0 8px 32px rgba(30, 64, 175, 0.1), 0 2px 8px rgba(30, 64, 175, 0.06);
-    --accent-glow: rgba(30, 64, 175, 0.26);
-    --text-primary: #0c1230;
-    --text-secondary: #3d527a;
-    --text-muted: #7090b8;
-    --accent: #1e40af;
-    --accent-2: #1d4ed8;
-    --accent-light: rgba(30, 64, 175, 0.09);
-    --nav-bg: rgba(255, 255, 255, 0.78);
-    --nav-border: rgba(255, 255, 255, 0.96);
-    --orb1: rgba(30, 64, 175, 0.18);
-    --orb2: rgba(37, 99, 235, 0.14);
-    --orb3: rgba(96, 165, 250, 0.12);
-}
-
-/* ════════════════════════════════════════════
-   DARK — True Midnight
-════════════════════════════════════════════ */
 [data-theme='dark'] {
     --bg-primary: #070c1b;
     --bg-secondary: #0d1428;
@@ -42,11 +19,18 @@
     --accent-light: rgba(96, 165, 250, 0.11);
     --nav-bg: rgba(7, 12, 27, 0.88);
     --nav-border: rgba(96, 165, 250, 0.08);
+    --toggle-track: rgba(18, 29, 54, 0.58);
+    --toggle-track-border: rgba(147, 197, 253, 0.16);
+    --toggle-thumb: rgba(76, 90, 122, 0.5);
+    --toggle-shadow: rgba(0, 0, 0, 0.18);
     --orb1: rgba(30, 64, 175, 0.24);
     --orb2: rgba(37, 99, 235, 0.18);
     --orb3: rgba(96, 165, 250, 0.12);
 }
 
+/* ════════════════════════════════════════════
+   DARK — True Midnight
+════════════════════════════════════════════ */
 /* ════════════════════════════════════════════
    SEPIA — Maritime Navy
 ════════════════════════════════════════════ */
@@ -65,6 +49,10 @@
     --accent-light: rgba(30, 58, 138, 0.09);
     --nav-bg: rgba(232, 239, 248, 0.86);
     --nav-border: rgba(148, 182, 220, 0.48);
+    --toggle-track: rgba(198, 214, 234, 0.48);
+    --toggle-track-border: rgba(30, 58, 138, 0.12);
+    --toggle-thumb: rgba(168, 185, 210, 0.46);
+    --toggle-shadow: rgba(30, 58, 138, 0.12);
     --orb1: rgba(30, 58, 138, 0.2);
     --orb2: rgba(30, 64, 175, 0.16);
     --orb3: rgba(59, 130, 246, 0.11);
@@ -128,6 +116,110 @@ a {
     border-bottom: 1px solid var(--nav-border);
     backdrop-filter: blur(36px) saturate(180%);
     -webkit-backdrop-filter: blur(36px) saturate(180%);
+}
+
+.theme-toggle {
+    width: 6.35rem;
+    height: 2.42rem;
+    border: 0;
+    padding: 0;
+    border-radius: 9999px;
+    background: transparent;
+    cursor: pointer;
+    color: inherit;
+    flex: 0 0 auto;
+}
+
+.theme-toggle__track {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0.22rem;
+    overflow: hidden;
+    border-radius: inherit;
+    background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.025)),
+        var(--toggle-track);
+    border: 1px solid var(--toggle-track-border);
+    box-shadow:
+        inset 0 1px 1px rgba(255, 255, 255, 0.18),
+        inset 0 -6px 14px rgba(3, 7, 18, 0.12),
+        0 3px 10px var(--toggle-shadow);
+    backdrop-filter: blur(22px) saturate(170%);
+    -webkit-backdrop-filter: blur(22px) saturate(170%);
+}
+
+.theme-toggle__track::before {
+    content: '';
+    position: absolute;
+    inset: 0.12rem;
+    border-radius: inherit;
+    background: linear-gradient(115deg, rgba(255, 255, 255, 0.12), transparent 44%, rgba(255, 255, 255, 0.04));
+    pointer-events: none;
+}
+
+.theme-toggle__thumb {
+    position: absolute;
+    top: 0.28rem;
+    left: 0.28rem;
+    width: calc(50% - 0.34rem);
+    height: calc(100% - 0.56rem);
+    border-radius: 9999px;
+    background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.035)),
+        var(--toggle-thumb);
+    box-shadow:
+        inset 0 1px 1px rgba(255, 255, 255, 0.2),
+        inset 0 -5px 12px rgba(7, 12, 27, 0.14),
+        0 2px 8px var(--toggle-shadow);
+    transition: transform 0.32s ease;
+    z-index: 1;
+}
+
+.theme-toggle[data-active-theme='dark'] .theme-toggle__thumb {
+    transform: translateX(calc(100% + 0.12rem));
+}
+
+.theme-toggle__icon {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    min-width: 0;
+}
+
+.theme-toggle__icon svg {
+    width: 1.08rem;
+    height: 1.08rem;
+    overflow: visible;
+}
+
+.theme-toggle__icon--sun svg {
+    fill: #d8d6dc;
+    stroke: #d8d6dc;
+    stroke-width: 2.25;
+    stroke-linecap: round;
+}
+
+.theme-toggle__icon--moon svg {
+    fill: #69a9ff;
+}
+
+[data-theme='sepia'] .theme-toggle__icon--sun svg {
+    fill: #f3f6fb;
+    stroke: #f3f6fb;
+}
+
+[data-theme='sepia'] .theme-toggle__icon--moon svg {
+    fill: #3b82d8;
+}
+
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
 }
 
 /* ─── Gradient text ─── */
@@ -684,16 +776,9 @@ a {
 }
 
 
-/* Paricles*/
-/* LIGHT */
+/* Particles */
 
 :root,
-[data-theme="light"] {
-  --particle-color: 30,64,175;
-  --particle-line-opacity: 0.12;
-  --particle-dot-opacity: 0.45;
-}
-
 [data-theme="dark"] {
   --particle-color: 147,197,253;
   --particle-line-opacity: 0.12;
