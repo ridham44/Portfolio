@@ -7,9 +7,9 @@
 [data-theme='dark'] {
     --bg-primary: #070c1b;
     --bg-secondary: #0d1428;
-    --bg-card: rgba(255, 255, 255, 0.04);
-    --border-card: rgba(96, 165, 250, 0.1);
-    --shadow-card: 0 8px 40px rgba(0, 0, 0, 0.72), 0 0 0 1px rgba(96, 165, 250, 0.04);
+    --bg-card: rgba(255, 255, 255, 0.1);
+    --border-card: rgba(96, 165, 250, 0.18);
+    --shadow-card: 0 8px 40px rgba(0, 0, 0, 0.72), 0 0 0 1px rgba(96, 165, 250, 0.08);
     --accent-glow: rgba(96, 165, 250, 0.3);
     --text-primary: #dbeeff;
     --text-secondary: #6d90b8;
@@ -37,8 +37,8 @@
 [data-theme='sepia'] {
     --bg-primary: #e8eff8;
     --bg-secondary: #f0f6ff;
-    --bg-card: rgba(218, 232, 248, 0.62);
-    --border-card: rgba(148, 182, 220, 0.42);
+    --bg-card: rgba(218, 232, 248, 0.75);
+    --border-card: rgba(148, 182, 220, 0.55);
     --shadow-card: 0 8px 32px rgba(15, 40, 100, 0.1), 0 2px 8px rgba(15, 40, 100, 0.06);
     --accent-glow: rgba(30, 58, 138, 0.26);
     --text-primary: #08172e;
