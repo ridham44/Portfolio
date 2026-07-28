@@ -14,6 +14,7 @@
     --text-primary: #dbeeff;
     --text-secondary: #6d90b8;
     --text-muted: #3a5270;
+    --text-placeholder: #8fafd2;
     --accent: #60a5fa;
     --accent-2: #93c5fd;
     --accent-light: rgba(96, 165, 250, 0.11);
@@ -44,6 +45,7 @@
     --text-primary: #08172e;
     --text-secondary: #2c4a6e;
     --text-muted: #5e7fa0;
+    --text-placeholder: #46698f;
     --accent: #1e3a8a;
     --accent-2: #1e40af;
     --accent-light: rgba(30, 58, 138, 0.09);
@@ -440,7 +442,8 @@ a {
     box-shadow: 0 0 0 3px var(--accent-light);
 }
 .form-input::placeholder {
-    color: var(--text-muted);
+    color: var(--text-placeholder);
+    opacity: 1;
 }
 
 /* ─── Scrollbar ─── */

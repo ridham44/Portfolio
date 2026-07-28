@@ -143,7 +143,7 @@ export default function Contact() {
                                     {icon}
                                 </div>
                                 <div style={{ overflow: 'hidden' }}>
-                                    <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 500, marginBottom: 2 }}>
+                                    <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', fontWeight: 600, marginBottom: 2 }}>
                                         {label}
                                     </p>
                                     {href ? (
