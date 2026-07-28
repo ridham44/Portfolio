@@ -99,7 +99,10 @@ a {
    GLASSMORPHISM
 ════════════════════════════════════════════ */
 .glass {
-    background: var(--bg-card);
+    /* Keep a visible tinted surface even when backdrop-filter is unavailable. */
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.035)),
+        var(--bg-card);
     border: 1px solid var(--border-card);
     /* inset top highlight = light ray hitting glass */
     box-shadow:
@@ -112,10 +115,36 @@ a {
 
 /* ─── Navbar glass ─── */
 .glass-nav {
-    background: var(--nav-bg);
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent 55%),
+        var(--nav-bg);
     border-bottom: 1px solid var(--nav-border);
     backdrop-filter: blur(36px) saturate(180%);
     -webkit-backdrop-filter: blur(36px) saturate(180%);
+}
+
+/* Some browsers/graphics modes disable backdrop-filter. Do not leave the UI
+   transparent in that case; render a solid, readable card instead. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .glass,
+    .github-card,
+    .filter-btn {
+        background: rgba(18, 29, 54, 0.94);
+    }
+
+    .glass-nav {
+        background: rgba(7, 12, 27, 0.96);
+    }
+
+    [data-theme='sepia'] .glass,
+    [data-theme='sepia'] .github-card,
+    [data-theme='sepia'] .filter-btn {
+        background: rgba(232, 239, 248, 0.96);
+    }
+
+    [data-theme='sepia'] .glass-nav {
+        background: rgba(232, 239, 248, 0.98);
+    }
 }
 
 .theme-toggle {
