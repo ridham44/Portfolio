@@ -95,7 +95,6 @@ export const projects = [
             'Designed and developed a premium storytelling-based matrimonial portfolio featuring a cinematic hero section, elegant personal introduction, luxury quote showcase, interactive life timeline, global travel experience map, dream destination explorer, curated travel gallery with categorized memories, personality insights, relationship values, ideal partner expectations, compatibility quiz, and premium contact experience. Implemented reusable React components, Framer Motion animations, responsive layouts, glassmorphism UI, smooth scrolling navigation, interactive cards, animated transitions, optimized image loading, and mobile-first architecture. The project follows clean frontend architecture, accessibility standards, SEO best practices, and modern performance optimization techniques while delivering a refined luxury user experience across desktop, tablet, and mobile devices.',
         tech: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Framer Motion', 'React Router', 'Lucide React'],
         tags: ['React', 'Luxury Portfolio', 'Matrimonial Website', 'Personal Branding', 'Frontend Engineering', 'UI Engineering'],
-        github: 'https://github.com/OrbitDevStudio-c/Wedding-portfolio',
         live: 'https://wedding-portfolio-lilac.vercel.app/',
         color: 'from-pink-500 via-rose-500 to-fuchsia-500',
     },
