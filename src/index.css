@@ -8,6 +8,7 @@
     --bg-primary: #070c1b;
     --bg-secondary: #0d1428;
     --bg-card: rgba(255, 255, 255, 0.1);
+    --glass-surface: rgba(12, 23, 47, 0.72);
     --border-card: rgba(96, 165, 250, 0.18);
     --shadow-card: 0 8px 40px rgba(0, 0, 0, 0.72), 0 0 0 1px rgba(96, 165, 250, 0.08);
     --accent-glow: rgba(96, 165, 250, 0.3);
@@ -39,6 +40,7 @@
     --bg-primary: #e8eff8;
     --bg-secondary: #f0f6ff;
     --bg-card: rgba(218, 232, 248, 0.75);
+    --glass-surface: rgba(232, 239, 248, 0.84);
     --border-card: rgba(148, 182, 220, 0.55);
     --shadow-card: 0 8px 32px rgba(15, 40, 100, 0.1), 0 2px 8px rgba(15, 40, 100, 0.06);
     --accent-glow: rgba(30, 58, 138, 0.26);
@@ -101,10 +103,9 @@ a {
    GLASSMORPHISM
 ════════════════════════════════════════════ */
 .glass {
-    /* Keep a visible tinted surface even when backdrop-filter is unavailable. */
-    background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.035)),
-        var(--bg-card);
+    /* A real alpha surface keeps the card visible even when the backdrop is sparse. */
+    background-color: var(--glass-surface);
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.035));
     border: 1px solid var(--border-card);
     /* inset top highlight = light ray hitting glass */
     box-shadow:
