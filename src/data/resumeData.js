@@ -21,24 +21,48 @@ export const education = [
 
 export const experience = [
     {
-        title: 'MERN Intern',
-        company: 'WebEarl Technologies',
-        period: 'Mar 2026 – Present',
+        title: 'AI/ML Developer',
+        company: 'Work24',
+        period: 'Aug 2026 - Present',
         current: true,
         points: [
-            'BookBuzz: Developed an academic book exchange and marketplace platform with APIs for authentication, books, cart management, purchases, trade-in orders, students, and publishers using Node.js, Express.js, MongoDB, and Mongoose.',
-            'PropertyHub: Built a real estate listing platform with APIs for properties, documents, amenities, nearby places, reviews, shortlists, and advanced search functionality using Node.js, Express.js, MongoDB, and Mongoose.',
-            'Shoply: Developed a scalable multi-tenant restaurant ordering and POS backend with APIs for menus, orders, billing, payments, QR code ordering, and reporting using Node.js, Express.js, Sequelize ORM, and MySQL.',
+            'Work on Hyphen OI, a live AI-powered platform built using large language models (LLMs) and AI APIs.',
+            'Develop LLM response generation and optimization pipelines and conversational flows for accurate, natural interactions.',
+            'Build AI chat, voice, and voice-to-voice capabilities to enable real-time user interactions.',
+            'Contribute to Generative AI, Conversational AI, Voice AI, and Python-based application development.',
+        ],
+    },
+    {
+        title: 'MERN Stack Intern',
+        company: 'WebEarl Technologies',
+        period: 'Mar 2026 - Aug 2026',
+        current: false,
+        points: [
+            'BookBuzz: Developed backend APIs for a live academic book marketplace covering authentication, books, cart, purchases, trade-ins, students, and publishers.',
+            'PropertyHub: Built APIs for a real-estate platform covering property listings, documents, amenities, reviews, shortlists, nearby places, and advanced search.',
+            'Shoply: Developed backend services for a multi-tenant restaurant ordering and POS system, including menus, orders, billing, payments, QR ordering, and reporting.',
+            'Built and integrated REST APIs using Node.js, Express.js, MongoDB, Mongoose, Sequelize, and MySQL.',
+        ],
+    },
+    {
+        title: 'Graphic Design Intern',
+        company: 'Art O Print',
+        period: 'Nov 2025 - Feb 2026',
+        current: false,
+        points: [
+            'Designed medical product packaging and print-ready box layouts based on client specifications.',
+            'Created layouts with accurate dimensions, typography, alignment, and visual consistency.',
         ],
     },
     {
         title: 'Node.js Intern',
         company: 'Communities Heritage Limited (CHL Group)',
-        period: 'May 2025 – Dec 2025',
+        period: 'May 2025 - Oct 2025',
         current: false,
         points: [
-            'CHPL Food: Developed a scalable multi-tenant food ordering system backend with APIs for menu, orders, billing, payments, and reporting using Node.js, Express.js, Sequelize ORM, and MySQL.',
-            'CHPL Vi: Built APIs and reports for call tracking, logging, and analytics including call details, role-based access, and timezone handling for tenant-specific insights using Node.js, Express.js, Sequelize ORM, and MySQL.',
+            'CHPL Food: Developed backend APIs for a multi-tenant food ordering platform, including menus, orders, billing, payments, and reporting.',
+            'CHPL VI: Developed APIs and analytics for a call tracking and logging platform, including RBAC, timezone handling, and tenant-specific reporting.',
+            'Built scalable REST APIs using Node.js, Express.js, Sequelize ORM, and MySQL; collaborated using GitLab in an Agile environment.',
         ],
     },
 ];

@@ -4,6 +4,8 @@ import { certificates } from '../data/certificate';
 import chplLogo from '../assets/chpl logo.png';
 import ljLogo from '../assets/Lj unvi logo.png';
 import webearlLogo from '../assets/webearl logo.png';
+import work24Logo from '../assets/worktwofour_logo.jpg';
+import artOPrintLogo from '../assets/art o print.jpg';
 
 const fadeUp = (delay = 0) => ({
     initial: { opacity: 0, y: 24 },
@@ -126,6 +128,8 @@ const ORG_LOGOS = {
     'WebEarl Technologies': webearlLogo,
     'Communities Heritage Limited (CHL Group)': chplLogo,
     'LJ Institute of Engineering and Technology, LJ University': ljLogo,
+    'Work24': work24Logo,
+    'Art O Print': artOPrintLogo,
 };
 
 function OrganizationLogo({ name }) {
