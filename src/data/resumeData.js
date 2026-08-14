@@ -126,6 +126,18 @@ export const projects = [
     // ── TIER 2 · Full-Stack + AI/ML Flagships ──────────────────────────────
     {
         id: 4,
+        title: 'Local AI Research Engine — Hardware-Aware RAG Assistant',
+        description:
+            'A fully local, privacy-first AI research assistant that performs intent classification, document retrieval, and dynamic model routing without relying on cloud APIs.',
+        details:
+            'Built a hardware-aware local AI RAG system using Python and FastAPI with a React frontend. The backend employs an in-process NLP stack (spaCy, RapidFuzz, ONNX MiniLM) for microsecond query understanding and semantic intent matching. It dynamically routes queries to the optimal local LLM via Ollama based on complexity, retrieving evidence from documents using ChromaDB vector search and BM25 with cross-encoder reranking.',
+        tech: ['Python', 'FastAPI', 'React', 'Ollama', 'ChromaDB', 'spaCy'],
+        tags: ['AI/ML', 'RAG', 'Fullstack', 'Python'],
+        github: 'https://github.com/ridham44/LLM-project-Cars',
+        color: 'from-fuchsia-500 to-purple-500',
+    },
+    {
+        id: 5,
         title: 'F1 Race Strategy Prediction & Analytics Platform',
         description:
             'Full-stack Formula 1 intelligence platform — MERN stack, Python ML pipelines, and Generative AI delivering real-time race strategy predictions, pit-stop optimisation, and driver performance insights.',
@@ -137,7 +149,7 @@ export const projects = [
         color: 'from-sky-500 to-cyan-500',
     },
     {
-        id: 5,
+        id: 6,
         title: 'AI Movie Recommendation & Emotion Analysis System',
         description:
             'Personalised film recommendation engine powered by a custom NLP emotion classifier that maps user mood — happy, sad, curious, excited — to genre-specific curated suggestions via Hugging Face datasets.',
@@ -149,7 +161,7 @@ export const projects = [
         color: 'from-pink-500 to-rose-500',
     },
     {
-        id: 6,
+        id: 7,
         title: 'AI-Powered Stock Market Prediction System',
         description:
             'Financial analytics platform using scikit-learn ML models trained on historical Yahoo Finance data to forecast stock prices with interactive Plotly charts.',
@@ -163,7 +175,7 @@ export const projects = [
 
     // ── TIER 3 · Production Internship Backends ────────────────────────────
     {
-        id: 7,
+        id: 8,
         title: 'Enterprise Multi-Tenant Food Ordering System',
         description:
             'Production-grade multi-tenant food ordering backend built during internship — full order lifecycle, billing, payment integration, and business reporting at scale.',
@@ -175,7 +187,7 @@ export const projects = [
         color: 'from-emerald-500 to-teal-500',
     },
     {
-        id: 8,
+        id: 9,
         title: 'vi Telecom — Call Tracking & Analytics Backend',
         description:
             'Real-world telecom backend for Vodafone Idea (vi) — call log APIs, role-based access control, and tenant-specific performance analytics with timezone-aware reporting.',
@@ -187,7 +199,7 @@ export const projects = [
         color: 'from-blue-500 to-indigo-500',
     },
     {
-        id: 9,
+        id: 10,
         title: 'Property Management System',
         description:
             'Real estate backend system for property listings, tenant onboarding, and booking management — built with secure role-based APIs.',
@@ -201,7 +213,7 @@ export const projects = [
 
     // ── TIER 4 · Domain Projects & Data Visualisation ──────────────────────
     {
-        id: 10,
+        id: 11,
         title: 'NFS-Inspired Car Review & Community Platform',
         description:
             'Full-stack MERN community platform for automotive enthusiasts — JWT-authenticated reviews, ratings, user profiles, and a visually immersive UI inspired by Need for Speed.',
@@ -213,7 +225,7 @@ export const projects = [
         color: 'from-orange-500 to-red-500',
     },
     {
-        id: 11,
+        id: 12,
         title: 'AI Medicine Recommendation System',
         description:
             'Symptom-driven medicine recommendation engine using ML models trained on medical datasets, served through an ASP.NET web interface.',
@@ -225,7 +237,7 @@ export const projects = [
         color: 'from-green-500 to-emerald-500',
     },
     {
-        id: 12,
+        id: 13,
         title: 'Formula 1 Championship Analytics Dashboard',
         description:
             'Advanced Power BI report delivering deep-dive analytics on F1 drivers, constructors, and race outcomes with DAX-powered measures.',
@@ -237,7 +249,7 @@ export const projects = [
         color: 'from-yellow-500 to-amber-500',
     },
     {
-        id: 13,
+        id: 14,
         title: 'Healthcare Operations Analytics Dashboard',
         description:
             'Multi-page Power BI dashboard for hospital administrators — patient flow, treatment effectiveness, resource utilisation, and financial KPIs.',
@@ -251,7 +263,7 @@ export const projects = [
 
     // ── TIER 5 · Core CS Fundamentals ─────────────────────────────────────
     {
-        id: 14,
+        id: 15,
         title: 'Java Banking Management System',
         description:
             'Console-based banking application covering the full account lifecycle — deposits, withdrawals, transfers, and fixed deposits — with JDBC-backed MySQL persistence.',
@@ -263,7 +275,7 @@ export const projects = [
         color: 'from-purple-500 to-violet-500',
     },
     {
-        id: 15,
+        id: 16,
         title: 'Java Flight Reservation System',
         description:
             'Structured Java application for flight scheduling, seat booking, passenger management, and itinerary reporting.',
@@ -276,11 +288,12 @@ export const projects = [
     },
 ];
 
-export const filterTags = ['All', 'Frontend Engineering', 'React', 'Node.js', 'Python', 'ML', 'AI', 'NLP', 'Django', 'Flask', 'MongoDB', 'Java', 'Power BI', 'C#'];
+export const filterTags = ['All', 'Frontend Engineering', 'React', 'Node.js', 'Python', 'ML', 'AI', 'NLP', 'Django', 'Flask', 'MongoDB', 'Java', 'Power BI', 'C#', 'RAG', 'Fullstack', 'FastAPI'];
 
 export const stats = [
     { label: 'GPA', value: '7.85', unit: '/10' },
-    { label: 'Projects', value: '12+', unit: '' },
+    { label: 'Projects', value: '13+', unit: '' },
     { label: 'Certificates', value: '10', unit: '' },
-    { label: 'Internships', value: '2', unit: '' },
+    { label: 'Internships', value: '3', unit: '' },
+    { label: 'Full-time', value: '2', unit: '' },
 ];
