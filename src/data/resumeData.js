@@ -205,7 +205,7 @@ export const projects = [
 export const filterTags = ['All', 'AI', 'RAG', 'Fullstack', 'React', 'Node.js', 'MongoDB', 'Python', 'FastAPI', 'ML', 'NLP', 'Django', 'Flask', 'Frontend Engineering'];
 
 export const stats = [
-    { label: 'GPA', value: '7.85', unit: '/10' },
+    { label: 'GPA', value: '7.97', unit: '/10' },
     { label: 'Projects', value: '13+', unit: '' },
     { label: 'Certificates', value: '10', unit: '' },
     { label: 'Internships', value: '3', unit: '' },
