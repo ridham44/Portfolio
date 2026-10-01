@@ -85,6 +85,32 @@ export const skillGroups = [
 
 export const projects = [
 
+    // ── FEATURED · AI Platforms ─────────────────────────────────────────────
+    {
+        id: 17,
+        title: 'RecruitIQ — AI Recruitment Platform',
+        description:
+            'Full-stack AI hiring platform where companies post jobs, screen and shortlist candidates, and run AI voice interviews.',
+        details:
+            'Designed a hybrid screening engine that blends deterministic skill, experience, and education scoring with LLM analysis, keeping demographic data out of prompts. Built AI voice interviews over LiveKit with Deepgram STT/TTS, driven by a stage-based state machine that auto-generates interview reports. Implemented race-safe interview slot booking, automated Brevo email notifications, and secure JWT authentication on a Node.js, PostgreSQL, and Prisma backend.',
+        tech: ['React', 'Node.js', 'PostgreSQL', 'Prisma', 'LiveKit', 'Deepgram', 'LLM'],
+        tags: ['AI', 'Fullstack', 'React', 'Node.js'],
+        live: 'https://recruitiq-eta.vercel.app/',
+        color: 'from-indigo-500 to-blue-500',
+    },
+    {
+        id: 18,
+        title: 'KnowledgeVoice — AI Knowledge Base Assistant',
+        description:
+            'RAG-based assistant that answers questions from uploaded PDF, DOCX, and TXT files with cited sources and voice Q&A.',
+        details:
+            'Implemented a pipeline for text extraction, chunking, and embeddings with strict per-user data isolation in MongoDB. Answers are generated through OpenRouter with source citations. Added voice Q&A with live transcription and Deepgram text-to-speech, plus JWT authentication with email-OTP verification.',
+        tech: ['React', 'Express.js', 'MongoDB', 'OpenRouter', 'Deepgram', 'RAG'],
+        tags: ['AI', 'RAG', 'Fullstack', 'React', 'Node.js', 'MongoDB'],
+        live: 'https://w24-knowledge-agent.vercel.app/',
+        color: 'from-teal-500 to-emerald-500',
+    },
+
     // ── TIER 1 · Enterprise Frontend & Production Applications ───────────────
     {
         id: 1,
