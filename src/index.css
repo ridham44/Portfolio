@@ -857,6 +857,13 @@ a {
     margin: 0;
 }
 
+.github-header-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.9rem;
+}
+
 .compact-activity-summary {
     display: flex;
     gap: 1rem;
@@ -1147,7 +1154,12 @@ a {
     .github-bottom-row {
         grid-template-columns: 1fr;
     }
-    
+
+    .github-header-actions {
+        width: 100%;
+        align-items: flex-start;
+    }
+
     .compact-activity-summary {
         width: 100%;
         justify-content: flex-start;
