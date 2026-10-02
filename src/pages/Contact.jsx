@@ -116,51 +116,64 @@ export default function Contact() {
                     </motion.h2>
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
-                        {contactItems.map(({ icon, label, value, href }, i) => (
-                            <motion.div
-                                key={label}
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.08 }}
-                                whileHover={{ x: 4 }}
-                                className="glass"
-                                style={{ padding: '1rem 1.25rem', display: 'flex', alignItems: 'center', gap: '1rem' }}
-                            >
-                                <div
+                        {contactItems.map(({ icon, label, value, href }, i) => {
+                            const Card = href ? motion.a : motion.div;
+                            const linkProps = href
+                                ? { href, target: href.startsWith('http') ? '_blank' : undefined, rel: 'noopener noreferrer' }
+                                : {};
+                            return (
+                                <Card
+                                    key={label}
+                                    {...linkProps}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: i * 0.08 }}
+                                    whileHover={{ x: 4 }}
+                                    className="glass"
                                     style={{
-                                        width: 44,
-                                        height: 44,
-                                        borderRadius: '0.75rem',
-                                        flexShrink: 0,
-                                        background: 'var(--accent-light)',
-                                        color: 'var(--accent)',
+                                        padding: '1rem 1.25rem',
                                         display: 'flex',
                                         alignItems: 'center',
-                                        justifyContent: 'center',
+                                        gap: '1rem',
+                                        color: 'inherit',
+                                        textDecoration: 'none',
+                                        cursor: href ? 'pointer' : 'default',
                                     }}
                                 >
-                                    {icon}
-                                </div>
-                                <div style={{ overflow: 'hidden' }}>
-                                    <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', fontWeight: 600, marginBottom: 2 }}>
-                                        {label}
-                                    </p>
-                                    {href ? (
-                                        <a
-                                            href={href}
-                                            target={href.startsWith('http') ? '_blank' : undefined}
-                                            rel="noopener noreferrer"
-                                            style={{ fontSize: '0.9rem', fontWeight: 500, color: 'var(--accent)', wordBreak: 'break-all' }}
+                                    <div
+                                        style={{
+                                            width: 44,
+                                            height: 44,
+                                            borderRadius: '0.75rem',
+                                            flexShrink: 0,
+                                            background: 'var(--accent-light)',
+                                            color: 'var(--accent)',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                        }}
+                                    >
+                                        {icon}
+                                    </div>
+                                    <div style={{ overflow: 'hidden' }}>
+                                        <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', fontWeight: 600, marginBottom: 2 }}>
+                                            {label}
+                                        </p>
+                                        <p
+                                            style={{
+                                                fontSize: '0.9rem',
+                                                fontWeight: 500,
+                                                wordBreak: 'break-all',
+                                                color: href ? 'var(--accent)' : undefined,
+                                            }}
                                         >
                                             {value}
-                                        </a>
-                                    ) : (
-                                        <p style={{ fontSize: '0.9rem', fontWeight: 500, wordBreak: 'break-all' }}>{value}</p>
-                                    )}
-                                </div>
-                            </motion.div>
-                        ))}
+                                        </p>
+                                    </div>
+                                </Card>
+                            );
+                        })}
                     </div>
                 </div>
 
