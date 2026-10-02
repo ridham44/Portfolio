@@ -6,7 +6,7 @@ export const personalInfo = {
     email: 'ridhampaems@gmail.com',
     phone: '+91 9313887585',
     location: 'Ahmedabad, Gujarat, India',
-    linkedin: 'https://www.linkedin.com/in/ridham-patel-141517279',
+    linkedin: 'https://www.linkedin.com/in/ridham-44-patel',
     github: 'https://github.com/ridham44',
 };
 

@@ -48,7 +48,7 @@ const contactItems = [
             </svg>
         ),
         label: 'LinkedIn',
-        value: 'ridham-patel-141517279',
+        value: 'ridham-44-patel',
         href: personalInfo.linkedin,
     },
     {
